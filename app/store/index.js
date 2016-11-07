@@ -29,11 +29,11 @@ store.deleteCategory = (catName) => {
     categoriesRef.update({'Uncategorized': 'white'})
   }
 
-  for (var key in bookmarks) {
-    if (bookmarks[key].category === catName) {
-      bookmarksRef.child(key).update({category: 'Uncategorized'})
+  bookmarks.forEach((bookmarkId) => {
+    if (bookmarks[bookmarkId].category === catName) {
+      bookmarksRef.child(bookmarkId).update({category: 'Uncategorized'})
     }
-  }
+  })
   categoriesRef.child(catName).remove()
 }
 
