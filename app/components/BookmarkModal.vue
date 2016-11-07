@@ -54,8 +54,8 @@
 
       addBookmark () {
         const newBookmark = {
-          title: this.bookmarkTitle,
-          url: this.bookmarkUrl,
+          title:    this.bookmarkTitle,
+          url:      this.bookmarkUrl,
           category: this.bookmarkCategory
         }
         store.addBookmark(newBookmark)

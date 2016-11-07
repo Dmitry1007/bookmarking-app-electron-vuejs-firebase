@@ -44,7 +44,7 @@
     methods: {
       updateListings (categories, bookmarks) {
         this.categories = categories
-        this.bookmarks = bookmarks
+        this.bookmarks  = bookmarks
       },
 
       setSelectedCategory (category) {

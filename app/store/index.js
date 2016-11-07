@@ -2,19 +2,19 @@ import { EventEmitter } from 'events'
 import Firebase from 'firebase'
 
 // ENTER YOUR FIREBASE URL BELOW
-const db = new Firebase("https://YOUR_FIREBASE_APP.firebaseio.com/")
+const db = new Firebase("https://bookmarks-863ad.firebaseio.com")
 const categoriesRef = db.child('categories')
-const bookmarksRef = db.child('bookmarks')
-const store = new EventEmitter()
+const bookmarksRef  = db.child('bookmarks')
+const store         = new EventEmitter()
 
 let categories = {}
-let bookmarks = {}
+let bookmarks  = {}
 
 db.on('value', (snapshot) => {
   var bookmarkData = snapshot.val()
   if (bookmarkData) {
     categories = bookmarkData.categories
-    bookmarks = bookmarkData.bookmarks
+    bookmarks  = bookmarkData.bookmarks
     store.emit('data-updated', categories, bookmarks)
   }
 })
@@ -38,6 +38,10 @@ store.deleteCategory = (catName) => {
 }
 
 store.addBookmark = (bookmark) => {
+  if (bookmark.category === '') {
+    store.addCategory({'Uncategorized': 'white'})
+    bookmark.category = 'Uncategorized'
+  }
   bookmarksRef.push(bookmark)
 }
 

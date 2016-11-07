@@ -2,7 +2,7 @@
   <div>
     <div id="categories">
       <div id="cat-header">
-        <h2><i class="bookmark icon"></i>Bookmark | coligo</h2>
+        <h2><i class="bookmark icon"></i>Bookmark</h2>
       </div>
       <div class="container">
         <h2>Categories
